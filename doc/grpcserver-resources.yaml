@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grpcserver-deployment
+  labels:
+    app: grpcserver
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: grpcserver
+  template:
+    metadata:
+      labels:
+        app: grpcserver
+    spec:
+      containers:
+        - name: grpcserver
+          image: registry.aps.datacanvas.com:5000/aps/test/envoy:0.1.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 35001
+          resources:
+            limits:
+              cpu: "1"
+              memory: 1Gi
+            requests:
+              cpu: 100m
+              memory: 512Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    svc: grpcserver-svc
+  name: grpcserver-svc
+spec:
+  ports:
+    - name: tcp
+      port: 35001
+      protocol: TCP
+      targetPort: 35001
+      nodePort: 31778
+  selector:
+    app: grpcserver
+  type: NodePort
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    svc: grpcserver-svc
+  name: grpcserver-svc-headless
+spec:
+  clusterIP: None
+  ports:
+    - name: tcp
+      port: 35001
+      protocol: TCP
+      targetPort: 35001
+  selector:
+    app: grpcserver

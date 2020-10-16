@@ -1,0 +1,32 @@
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+
+### IntelliJ IDEA ###
+.idea
+.ipynb_checkpoints
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+### Runtime ###
+/logs
+/target
+.class
+/metastore_db
+/derby.log
+
+### maven ###
+dependency-reduced-pom.xml
