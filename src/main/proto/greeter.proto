@@ -7,13 +7,11 @@ option objc_class_prefix = "WY";
 
 package onlytest;
 
-//定义服务
 service Greeter {
-    //注意：这里是returns 不是return
     rpc TestSomeThing (TestRequest) returns (TestResponse) {
     }
 }
-//定义消息类型
+
 message TestRequest {
     string name = 1;
 }

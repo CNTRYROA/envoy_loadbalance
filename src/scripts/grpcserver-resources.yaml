@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: grpcserver
-          image: registry.aps.datacanvas.com:5000/aps/test/envoy:0.1.0
+          image: registry.cntryroa.com:5000/aps/test/envoy:0.1.0
           imagePullPolicy: Always
           ports:
             - containerPort: 35001

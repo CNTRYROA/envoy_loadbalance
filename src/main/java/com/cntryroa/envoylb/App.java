@@ -1,4 +1,4 @@
-package com.cntryroa;
+package com.cntryroa.envoylb;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;

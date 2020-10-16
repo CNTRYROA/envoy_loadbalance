@@ -1,4 +1,4 @@
-package com.cntryroa;
+package com.cntryroa.envoylb;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
@@ -8,13 +8,13 @@ import io.grpc.justtest.TestResponse;
 
 import java.util.concurrent.TimeUnit;
 
-public class Client2 {
+public class Client {
     private final ManagedChannel channel;
     private final GreeterGrpc.GreeterBlockingStub blockingStub;
-    private static final String host = "172.20.51.17";
-    private static final int ip = 31778;
+    private static final String host = "127.0.0.1";
+    private static final int ip = 35001;
 
-    public Client2(String host, int port) {
+    public Client(String host, int port) {
         //usePlaintext表示明文传输，否则需要配置ssl
         //channel  表示通信通道
         channel = ManagedChannelBuilder.forAddress(host, port).usePlaintext(true).build();
@@ -33,7 +33,7 @@ public class Client2 {
     }
 
     public static void main(String[] args) {
-        Client2 client = new Client2(host, ip);
+        Client client = new Client(host, ip);
         for (int i = 0; i <= 5; i++) {
             client.testResult("<<<<<result>>>>>:" + i);
         }
